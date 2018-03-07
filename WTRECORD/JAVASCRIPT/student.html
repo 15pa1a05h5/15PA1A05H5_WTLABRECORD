@@ -1,0 +1,114 @@
+<!--Write a program create a student registration form with First name, Last name, username, password, gender, 
+registration number, Date of Birth, Address, phone number, Zip Code, average marks, email, Submit Button.
+ Validate the form elements with JavaScript. 
+ The registration number of the user must be in the DDPA1ADDLL format. Here D means
+digit and L means letter. For example valid registration number is 15PA1A05H9.-->
+ <html>
+     <form>
+        First name:<input type="text" id="one" name="firstname" required><br><br>
+        Last name:<input type="text" id="two" name="lastname" ><br><br>
+        username:<input type="text" id="user" name="username" required><br><br>
+        password:<input type="password" id="pass" name="password" required><br><br>
+        gender:<input type="radio" id="male" name='gender'>male
+        <input type="radio" id="female" name='gender'>female<br><br>
+        registration number:<input type="text" id="number" name="registration number" required><br><br>
+        Date of Birth:<input type="text" name="DOB" id="date" required><br><br>
+        Address:<textarea style="width:100px; height:50px;" required></textarea><br><br>
+        phone number:<input type="text" id="mbno" name="mobile no" required><br><br>
+        zipcode:<input type="text" id="zip" name="code" required><br><br>
+        average marks:<input type="text" id="marks" name="marks" required><br><br>
+        email:<input type="text" id="email" name="email" required><br><br>
+  <input type="submit" value="Submit" id="sub">
+</form> 
+ </html>
+ <script>
+ document.getElementById("sub").onclick=function(){
+     var letters = /^[A-Za-z]+$/;
+    var str=document.getElementById("one").value;
+    if(!(str.match(letters))){
+        alert("enter only alphabets");
+    return false;
+    }
+    var str=document.getElementById("two").value;
+    if(!(str.match(letters))){
+        alert("enter only alphabets");
+        return false;
+    }
+    var str=document.getElementById("user").value;
+    var len=str.length;
+    if(len>10) {
+    alert("user name must be lessthan 10 characters");
+    return false;
+    }   
+    var str=document.getElementById("pass").value;
+    var len=str.length;
+    if(len<6) {
+    alert("password name must be greaterthan 6 characters");
+    return false;
+    }
+    else{
+        var res=/^[A-Za-z\d!@#$%^&*()_+]+$/;
+        console.log(str);
+        if(!(str.match(res))){
+            alert("password should contain special characters");
+            return false;
+        }
+    }
+    var str=document.getElementById("number").value;
+    var res=/^\d{2}[A-Za-z]{2}\d{1}[A-Za-z]{1}\d{2}[A-Za-z]{1}\d{1}$/;
+    if(!(str.match(res))){
+        alert("wrong register number"); 
+        return false;
+    }
+    var str=document.getElementById("mbno").value;
+    var len=str.length;
+    if(len==10){
+        var res=/^\d{10}$/;
+    if(!(str.match(res))){
+        alert("enter proper mobile number");
+        return false;
+    }
+    }
+    var str=document.getElementById("date").value;
+    var len=str.length;
+    if(len==10){
+        var res=/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+        if(!(str.match(res))){
+        alert("enter date of birth in the form of dd/mm/yyyy");
+        return false;
+    }
+    }
+    var str=document.getElementById("zip").value;
+    var len=str.length;
+    if(len!=6)
+    {
+        alert("Zipcode length should be 6");
+        return false;
+    }
+    else{
+        var res=/^\d{6}/;
+        if(str.length!=0&&!(str.match(res)))
+        {
+            alert("Zipcode should be only in numbers");
+            return false;
+        }
+    }
+    var str=document.getElementById("marks").value;
+    var res=parseFloat(str);
+    if(res<0||res>99)
+        alert("Give appropriate result");
+    var str=document.getElementById("email").value;
+    var res=/^[A-Za-z\d]+@+[A-Za-z]+.com+$/;
+    if(str.length!=0&&!(str.match(res)))
+        {
+            alert("gmail should be in the form of sometext@domain.com.");
+            return false;
+        }
+ }  
+</script>
+<style>
+    from{
+       text-align: center;
+    }
+
+</style>

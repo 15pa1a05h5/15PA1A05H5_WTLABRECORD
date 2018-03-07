@@ -1,0 +1,19 @@
+<!--Write a program to increase the size of the image when the mouse over on the image. -->
+<html>
+    <head> 
+        <title>Text Object Value</title> 
+    </head> 
+    <body> 
+       <img id="input" src="magic-cake1.jpg" height="50px" width="50px">
+    </body> 
+</html>
+<script>
+    document.getElementById("input").onmouseover=function(){
+        document.getElementById("input").style.width="100px";
+        document.getElementById("input").style.height="100px";
+    }
+    document.getElementById("input").onmouseleave=function(){
+        document.getElementById("input").style.width="50px";
+        document.getElementById("input").style.height="50px";
+    }
+</script>

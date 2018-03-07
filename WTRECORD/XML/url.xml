@@ -1,0 +1,98 @@
+//DTD
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Bookmarks [
+<!ELEMENT Bookmarks (urls+)>
+<!ELEMENT urls (URL,Name,Description,Tags)>
+<!ELEMENT URL (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Tags (tag1,tag2)>
+<!ELEMENT tag1 (#PCDATA)>
+<!ELEMENT tag2 (#PCDATA)>
+]>
+
+//XML FILE
+
+
+<Bookmarks>
+<urls>
+    <URL>https://vishnulearning.in/mod/assign/view.php?id=1110</URL>
+	<Name>VishnuLearning</Name>
+	<Description>WebTechnologies couurse in VishnuLearning</Description>
+	<Tags>
+		<tag1>mod</tag1>
+		<tag2>assign</tag2>
+	</Tags>
+</urls>
+<urls>
+    <URL>https://www.w3schools.com/tags/ref_urlencode.asp</URL>
+	<Name>W3Schools</Name>
+	<Description>Encoding of urls</Description>
+	<Tags>
+		<tag1>tags</tag1>
+		<tag2>ref_urlencode</tag2>
+	</Tags>
+</urls>
+</Bookmarks>
+
+//XML SCHEMA
+
+<?xml version="1.0" encoding="UTF-8"?>
+	<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Bookmarks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="urls" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="URL"       type="xs:string"></xs:element>
+							<xs:element name="Name"  type="xs:string"></xs:element>
+							<xs:element name="Description"    type="xs:string"></xs:element>
+                    
+                                  <xs:sequence>
+				     <xs:element name="Tags" maxOccurs="unbounded">
+					<xs:complexType>
+                                                <xs:sequence>
+                                                     <xs:element name="tag1" type="xs:string"></xs:element>
+							<xs:element name="tag2" type="xs:string"></xs:element>
+						</xs:sequence>
+						</xs:complexType>
+                                         </xs:element>
+                             </xs:sequence>
+</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		</xs:element>
+</xs:schema>
+
+//XSLT CODE
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<html> 
+<body>
+  <h2>My CD Collection</h2>
+  <table border="1">
+    <tr bgcolor="#9acd32">
+      <th style="text-align:left">URL</th>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+    <xsl:for-each select="Bookmarks/urls">
+    <tr>
+      <td><xsl:value-of select="URL"/></td>
+      <td><xsl:value-of select="Name"/></td>
+      <td><xsl:value-of select="Description"/></td>
+    </tr>
+    </xsl:for-each>
+  </table>
+</body>
+</html>
+</xsl:template>
+</xsl:stylesheet>
+

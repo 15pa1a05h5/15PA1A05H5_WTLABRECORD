@@ -1,0 +1,17 @@
+<!--Write a program input text in the text field and convert the text field text into capital letters
+when you leave the text field.-->
+ <html> 
+    <head> 
+        <title>Text Object Value</title> 
+    </head> 
+    <body> 
+        Enter lowercase letters for conversion to uppercase:<br> 
+        <input type="text" name="input" id="input" /><br /> 
+        <input type="text" name="output" id="output" value="" /> 
+    </body> 
+</html> 
+<script>
+document.getElementById('input').onmouseleave= function(){ 
+    document.getElementById("output").value = document.getElementById("input").value.toUpperCase(); 
+} 
+</script> 
